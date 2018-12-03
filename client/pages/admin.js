@@ -29,7 +29,7 @@ class Admin extends Component {
         <Navigation name={'Settings'}/>
         <SettingsForm
           loading={this.props.state.users.loading}
-          updateSettings={this.state && this.state.updateSettings}
+          updateSettings={this.props.updateSettings}
           settings={this.state && this.state.updateSettings || {}}/>
       </Card>
     )

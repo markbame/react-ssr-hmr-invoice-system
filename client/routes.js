@@ -6,6 +6,7 @@ import Invoices from './pages/invoices'
 import Invoice from './pages/invoice'
 import Products from './pages/products'
 import Product from './pages/product'
+import DownloadPDF from './pages/downloadPDF'
 const routes = [
   {
     component: AppRoot,
@@ -42,6 +43,10 @@ const routes = [
       {
         path: '/product/:id',
         component: Product,
+      },
+      {
+        path: '/invoice-download/:id',
+        component: DownloadPDF,
       },
       {
        path: '*',
