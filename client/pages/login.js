@@ -12,7 +12,7 @@ class Login extends Component {
     return (
       <div>
         {' '}
-        Login<Link to="/home">Home</Link>{' '}
+        Admin<Link to="/home">Home</Link>{' '}
       </div>
     )
   }

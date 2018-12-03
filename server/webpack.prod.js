@@ -25,6 +25,18 @@ module.exports = {
   module: {
     loaders: [
             {
+              test: /\.css$/, use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: {
+                  loader: "css-loader",
+                  options: {
+                    sourceMap: true
+                  }
+                },
+                publicPath: "../"
+              })
+            },
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
@@ -33,8 +45,12 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: [ 'css-loader' ] })
+                test: /\.less$/,
+                loader: "style-loader!css-loader!less-loader"
+            },
+            {
+                test: /\.scss/,
+                loader: "style-loader!css-loader!sass-loader"
             },
             {
                  test: /\.(jpe?g|gif|png|eot|svg|woff|woff2|ttf)$/,
@@ -78,6 +94,11 @@ module.exports = {
           'process.env': {
             'NODE_ENV': JSON.stringify('production')
           }
-        })
+        }),
+        new ExtractTextPlugin({
+    			filename: "css/[name].css?[hash]-[chunkhash]-[contenthash]-[name]",
+    			disable: false,
+    			allChunks: true
+    		}),
     ]
 }

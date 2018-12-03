@@ -1,14 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
 import BrowserRouter from 'react-router-dom/BrowserRouter'
 import { renderRoutes } from 'react-router-config'
 import routes from './routes'
-
 import { Provider } from 'react-redux'
 import store from './state/store'
-
 import App from './app'
+
 if (module.hot) {
   module.hot.accept()
 }

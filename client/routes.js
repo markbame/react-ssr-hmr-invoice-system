@@ -1,8 +1,11 @@
 import AppRoot from './app'
 import Home from './pages/home'
 import Login from './pages/login'
-import NotFound from './pages/notfound'
-
+import Admin from './pages/admin'
+import Invoices from './pages/invoices'
+import Invoice from './pages/invoice'
+import Products from './pages/products'
+import Product from './pages/product'
 const routes = [
   {
     component: AppRoot,
@@ -21,8 +24,28 @@ const routes = [
         component: Login
       },
       {
+        path: '/admin',
+        component: Admin
+      },
+      {
+        path: '/products',
+        component: Products,
+      },
+      {
+        path: '/invoices',
+        component: Invoices,
+      },
+      {
+        path: '/invoice/:id',
+        component: Invoice,
+      },
+      {
+        path: '/product/:id',
+        component: Product,
+      },
+      {
        path: '*',
-       component: NotFound
+       component: Home
       }
     ]
   }
