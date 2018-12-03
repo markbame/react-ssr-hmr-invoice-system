@@ -14,6 +14,7 @@ class itemForm extends Component {
         const newValues = {...values, total}
         this.props.create(newValues, `invoice/${this.props.itemID}/items`, "UPSERTED_ITEM")
         this.props.handleClose()
+        this.props.form.resetFields()
       }
     })
   }
@@ -33,9 +34,11 @@ class itemForm extends Component {
   }
 
   componentWillReceiveProps (newProps) {
+    if(newProps != this.props) {
       this.setState({
         products: newProps.prodState && newProps.prodState.products
       })
+    }
   }
 
   render() {

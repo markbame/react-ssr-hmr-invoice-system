@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import moment from 'moment'
-import  { Redirect } from 'react-router-dom'
+import  { Redirect, Link } from 'react-router-dom'
 import { Form, Select, Input, Button, Tag, DatePicker, Icon } from 'antd'
 const FormItem = Form.Item
 const Option = Select.Option
-
 class invoiceForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
@@ -42,7 +41,7 @@ class invoiceForm extends Component {
     return (
       <Form onSubmit={this.handleSubmit} style={{padding:"2px"}}>
       { this.state.redirect && this.state.invoice && this.state.invoice.key && <Redirect to={`/invoice/${this.state.invoice.key}`} /> }
-        <Tag color="magenta" style={{margin:"20px"}}><Icon type="download" /> Download PDF</Tag>
+        <Tag color="magenta" style={{margin:"20px"}}><Icon type="download" /><Link to={`/invoice-download/${this.props.itemID}`}> Download PDF</Link></Tag>
         <FormItem
           label="Sold To"
           labelCol={{ span: 5 }}
