@@ -9,15 +9,15 @@ import ProductForm from '../components/productForm'
 import {rowSelection, columns} from '../components/itemsTable'
 import ItemModal from '../components/itemModal'
 import { update, list, get, create } from '../state/actions/crud'
+
 class Product extends Component {
 
   static fetchData(store) {
-    //return store.dispatch(settings());
+    return store.dispatch(this.props.get(`products/${this.props.match.params.id}`, 'FETCHED_PRODUCT'))
   }
 
   componentWillMount = () => {
-      const {id} = this.props.match.params
-      this.props.get(`products/${id}`, 'FETCHED_PRODUCT')
+      this.props.get(`products/${this.props.match.params.id}`, 'FETCHED_PRODUCT')
   }
 
   componentWillReceiveProps (newProps) {
@@ -26,8 +26,7 @@ class Product extends Component {
       })
   }
 
-
-   render() { 
+   render() {
     return (
       <Card bordered={false}  style={{width:"800px"}}>
         <Navigation name={'Product'} />

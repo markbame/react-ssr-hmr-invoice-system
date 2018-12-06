@@ -21,9 +21,7 @@ class Admin extends Component {
       })
   }
 
-
-
-  render() { console.log('this.state',this.state)
+  render() {
     return (
       <Card bordered={false} style={{width:"800px"}}>
         <Navigation name={'Settings'}/>

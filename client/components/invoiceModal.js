@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Modal, Button } from 'antd'
 import InvoiceForm from './invoiceForm'
 
-class invoiceModal extends React.Component {
+class invoiceModal extends Component {
   state = { visible: false }
 
   showModal = () => {

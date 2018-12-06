@@ -9,10 +9,8 @@ import InvoiceForm from '../components/invoiceForm'
 import {rowSelection, columns} from '../components/itemsTable'
 import ItemModal from '../components/itemModal'
 import { update, list, get, create } from '../state/actions/crud'
+
 class Invoice extends Component {
-
-
-
   componentWillMount = () => {
       const {id} = this.props.match.params
       this.props.get(`invoice/${id}`, 'FETCHED_INVOICE')

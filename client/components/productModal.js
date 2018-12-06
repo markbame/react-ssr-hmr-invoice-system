@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Modal, Button } from 'antd'
 import ProductForm from './productForm'
 
-class itemModal extends React.Component {
+class itemModal extends Component {
   state = { visible: false }
 
   showModal = () => {

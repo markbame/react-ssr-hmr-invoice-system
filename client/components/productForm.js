@@ -9,7 +9,6 @@ class productForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
-      console.log("this.props", this.props)
       if (!err) {
         if(this.props.create) {
           this.props.create(values, `products`, "UPSERTED_PRODUCT")

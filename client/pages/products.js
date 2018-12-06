@@ -20,7 +20,6 @@ class Products extends Component {
   }
 
   componentWillReceiveProps (newProps) {
-      console.log("this.state", newProps.state)
       this.setState({
         products: newProps.state.products && newProps.state.products.products
       })
