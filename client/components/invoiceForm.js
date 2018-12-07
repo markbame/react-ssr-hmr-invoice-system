@@ -10,11 +10,15 @@ class invoiceForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         const newDate = JSON.stringify(values.date)
-        const newValues = { soldTo: values.soldTo, address: values.address, date: newDate}
+        console.log('this state', values)
         if(this.props.itemID) {
-          this.props.update(newValues, `invoice/${this.props.itemID}`, "UPSERTED_PRODUCT")
+          this.props.update({soldTo: values.soldTo, address: values.address, date: newDate},
+             `invoice/${this.props.itemID}/buyer`,
+              "UPSERTED_PRODUCT")
         } else {
-          this.props.create(newValues, "invoice", "UPSERTED_INVOICE")
+          this.props.create({ buyer : {soldTo: values.soldTo, address: values.address, date: newDate}},
+            "invoice",
+            "UPSERTED_INVOICE")
         }
         this.setState({
           redirect: true
@@ -31,7 +35,8 @@ class invoiceForm extends Component {
 
   componentWillReceiveProps (newProps) {
     this.setState({
-      invoice: newProps.invoice && newProps.invoice.invoice
+      invoice: newProps.invoice && newProps.invoice.invoice,
+      products: newProps.products && newProps.products.products
     })
   }
 
@@ -49,7 +54,7 @@ class invoiceForm extends Component {
         >
           {getFieldDecorator('soldTo', {
             rules: [{ required: true, message: 'Please add the buyer!' }],
-            initialValue: invoice && invoice.soldTo || this.state.invoice && this.state.invoice.soldTo || ''
+            initialValue: invoice && invoice.soldTo || this.state.invoice && this.state.invoice.buyer && this.state.invoice.buyer.soldTo || ''
           })(
             <Input />
           )}
@@ -61,7 +66,7 @@ class invoiceForm extends Component {
           >
             {getFieldDecorator('address', {
               rules: [{ required: true, message: 'Please add the buyer address!' }],
-              initialValue: invoice && invoice.address || this.state.invoice && this.state.invoice.address || ''
+              initialValue: invoice && invoice.address || this.state.invoice && this.state.invoice.buyer && this.state.invoice.buyer.address || ''
             })(
               <Input />
             )}

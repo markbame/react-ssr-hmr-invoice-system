@@ -17,16 +17,32 @@ class Invoices extends Component {
   }
 
   componentWillReceiveProps (newProps) {
+    console.log("nep orp", newProps.state)
+    if(newProps.state.invoice && newProps.state.invoice.invoices) {
       this.setState({
-        invoice: newProps.state.invoice
+        invoice: newProps.state.invoice,
+        buyers: this.getBuyers( newProps.state.invoice.invoices)
       })
+    }
+
   }
 
   componentWillMount = () => {
       this.props.list(`invoice`, 'FETCHED_INVOICES')
   }
 
+  getBuyers = (invoices) => {
+    console.log('inv', invoices)
+    const buyers = []
+    for (var i = 0; i < invoices.length; i++) {
+      buyers.push({...invoices[i].buyer, id: invoices[i].id, key: invoices[i].key})
+    }
+    return buyers
+  }
+
    render() {
+
+     console.log('buyers', this.state && this.state.buyers)
     return (
       <Card bordered={false}  style={{width:"1300px"}}>
         <Navigation name={'Invoices'} />
@@ -39,7 +55,7 @@ class Invoices extends Component {
           bordered
           pagination={false}
           columns={columns}
-          dataSource={this.props.state.invoice.invoices}
+          dataSource={this.state && this.state.buyers}
           size="small" />
       </Card>
     )

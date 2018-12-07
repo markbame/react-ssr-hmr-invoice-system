@@ -43,6 +43,7 @@ class Invoice extends Component {
             create={this.props.create}
             update={this.props.update}
             itemID={this.props.match.params.id}
+            products={this.props.products}
          />
         <Divider>Items</Divider>
         <ItemModal
