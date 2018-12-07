@@ -24,17 +24,25 @@ const columns = [
  class ComponentToPrint extends Component {
    render() {
     const { soldTo, date, items } = this.props.invoice.invoice
-    const {compant, address, owner, tin} = this.props.user.settings.data
+    const {compant, address, owner, tin, tax} = this.props.user.settings.data
     const data = []
-    let key, total=0
+    let key, total=0, totalTaxable=0
     if(items) {
       const itemsKeys = Object.keys(items)
       for (var i = 0; i < itemsKeys.length; i++) {
         key = itemsKeys[i]
         total+=items[key].total
+        if(items[key].taxable) {
+          console.log("aa",items[key])
+          totalTaxable +=items[key].total
+        }
         data.push(items[key])
       }
     }
+    data.push({qty:'',specification:'',price:'Total Sales (VAT inclusive)',total:totalTaxable}) //100
+    data.push({qty:'',specification:'',price:'Less VAT',total:(totalTaxable*tax/100)}) // amountNETVAT*.12
+    data.push({qty:'',specification:'',price:'Amount Net of VAT',total:(Math.round(totalTaxable/(1+(tax/100))))}) // 100/1.12
+    data.push({qty:'',specification:'',price:'VAT Exempt Sales',total:total-totalTaxable}) // total - total taxable
     data.push({qty:'',specification:'',price:'Grand Total',total})
     return (
       <div>

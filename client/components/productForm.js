@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import moment from 'moment'
 import  { Redirect } from 'react-router-dom'
-import { Form, Select, Input, Button, Tag, DatePicker, Icon } from 'antd'
+import { Form, Select, Input, Button, Tag, DatePicker, Icon, Checkbox } from 'antd'
 const FormItem = Form.Item
 const Option = Select.Option
 
@@ -71,6 +71,14 @@ class productForm extends Component {
             })(
               <Input />
             )}
+        </FormItem>
+        <FormItem >
+          {getFieldDecorator('taxable', {
+            valuePropName: 'checked',
+            initialValue: this.state && this.state.product && this.state.product.taxable?true:false
+          })(
+            <Checkbox><a href="">Taxable</a></Checkbox>
+          )}
         </FormItem>
         <FormItem wrapperCol={{ span: 12, offset: 5 }} >
           <Button type="primary" htmlType="submit" loading={this.props.loading}  style={{margin:"2px"}}>

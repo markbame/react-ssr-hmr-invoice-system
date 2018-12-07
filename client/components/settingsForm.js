@@ -80,6 +80,19 @@ class settingsForm extends Component {
         </FormItem>
 
         <FormItem
+            label="Tax"
+            labelCol={{ span: 5 }}
+            wrapperCol={{ span: 12 }}
+          >
+            {getFieldDecorator('tax', {
+              rules: [{ required: true, message: 'Please add the tax!' }],
+              initialValue: this.state.settings.tax
+            })(
+              <Input />
+            )}
+        </FormItem>
+
+        <FormItem
             label="key"
             labelCol={{ span: 5 }}
             wrapperCol={{ span: 12 }}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import moment from 'moment'
-import { Form, Select, Input, Button, Tag, DatePicker } from 'antd'
+import { Form, Select, Input, Button, Tag, DatePicker, Checkbox } from 'antd'
 const FormItem = Form.Item
 const Option = Select.Option
 import {list} from '../state/actions/crud'
@@ -28,7 +28,8 @@ class itemForm extends Component {
       const productData = JSON.parse(options.key)
       this.setState({
         price: productData.price,
-        unit: productData.unit
+        unit: productData.unit,
+        taxable: productData.taxable,
       })
     }
   }
@@ -54,7 +55,14 @@ class itemForm extends Component {
           })(
             <Select style={{ width: 120 }} onChange={this.handleChange.bind(this)}>
               { this.state &&  this.state.products.map(function(product){
-                 return <Option value={product.title} key={JSON.stringify({key: product.key, price: product.price, unit:product.unit})}>{product.title}</Option>
+                 return <Option value={product.title} key={JSON.stringify({
+                   key: product.key,
+                   price: product.price,
+                   unit:product.unit,
+                   taxable:product.taxable})}
+                   >
+                   {product.title}
+                </Option>
               }) }
             </Select>
           )}
@@ -93,6 +101,18 @@ class itemForm extends Component {
               initialValue: this.state && this.state.price || 0
             })(
               <Input />
+            )}
+        </FormItem>
+        <FormItem
+            label="Taxable"
+            labelCol={{ span: 5 }}
+            wrapperCol={{ span: 12 }}
+          >
+            {getFieldDecorator('taxable', {
+              valuePropName: 'checked',
+              initialValue: this.state && this.state.taxable?true:false
+            })(
+              <Checkbox />
             )}
         </FormItem>
         <FormItem wrapperCol={{ span: 12, offset: 5 }} >
