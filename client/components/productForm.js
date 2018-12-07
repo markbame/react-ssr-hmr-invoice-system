@@ -72,12 +72,14 @@ class productForm extends Component {
               <Input />
             )}
         </FormItem>
-        <FormItem >
+        <FormItem label="Taxable"
+          labelCol={{ span: 5 }}
+          wrapperCol={{ span: 12 }}>
           {getFieldDecorator('taxable', {
             valuePropName: 'checked',
             initialValue: this.state && this.state.product && this.state.product.taxable?true:false
           })(
-            <Checkbox><a href="">Taxable</a></Checkbox>
+            <Checkbox/>
           )}
         </FormItem>
         <FormItem wrapperCol={{ span: 12, offset: 5 }} >
