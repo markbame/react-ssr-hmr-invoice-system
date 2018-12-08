@@ -47,7 +47,7 @@ class itemForm extends Component {
     return (
       <Form onSubmit={this.handleSubmit} style={{padding:"2px"}}>
       <FormItem
-          label="Name"
+          label="Item"
           labelCol={{ span: 5 }}
           wrapperCol={{ span: 12 }}
         >

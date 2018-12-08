@@ -11,10 +11,21 @@ const columns = [
   title: 'Specification',
   dataIndex: 'specification',
   key: 'specification',
+},
+{
+ title: 'Unit',
+ dataIndex: 'unit',
+ key: 'unit',
 }, {
   title: 'Price',
   dataIndex: 'price',
   key: 'price',
+  render: text => {
+    if(text=="Grand Total") {
+      return  <div><b>{text}</b></div>
+    }
+    return text
+  },
 },{
   title: 'Total',
   dataIndex: 'total',
@@ -23,7 +34,9 @@ const columns = [
 
  class ComponentToPrint extends Component {
    render() {
-    const { soldTo, date, items } = this.props.invoice.invoice
+    const { items, buyer: {soldTo, date} } = this.props.invoice.invoice
+
+    console.log("tea",this.props.invoice.invoice, soldTo)
     const {compant, address, owner, tin, tax} = this.props.user.settings.data
     const data = []
     let key, total=0, totalTaxable=0
@@ -42,7 +55,7 @@ const columns = [
     data.push({qty:'',specification:'',price:'Less VAT',total:(totalTaxable*tax/100)})
     data.push({qty:'',specification:'',price:'Amount Net of VAT',total:(Math.round(totalTaxable/(1+(tax/100))))})
     data.push({qty:'',specification:'',price:'VAT Exempt Sales',total:total-totalTaxable})
-    data.push({qty:'',specification:'',price:'Grand Total',total})
+    data.push({qty:'',specification:'',price:'Grand Total', total})
     return (
       <div>
         <h2 key={compant} style={{margin:"1px",marginTop:"60px", "textAlign":"center"}}>{compant}</h2>
@@ -56,7 +69,7 @@ const columns = [
           dataSource={data}
           pagination={false}
           columns={columns} />
-        <h4 key={12} style={{marginLeft:"30px", "textAlign":"left", fontWeight:"bold"}}>Signiture:</h4>
+        <h4 key={12} style={{marginLeft:"30px", "textAlign":"left", fontWeight:"bold"}}>Signature:</h4>
       </div>
     )
   }

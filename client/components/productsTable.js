@@ -20,7 +20,7 @@ export const columns = [
   }, {
     title: 'Price',
     dataIndex: 'price',
-    render: text => <Tag color="orange"><Icon type="dollar" /> {text}</Tag>
+    render: text => <Tag color="orange">&#x20b1; {text}</Tag>
   },
     {
      title: 'Unit',

@@ -8,10 +8,3 @@ var config = {
     messagingSenderId: "360610458869"
   };
 export default initializeApp(config, "fireapp"+Math.random())
-
-// fireapp.database().ref('settings').push({
-//   compant: "LTR General Merchandise",
-//   address: "Laguna",
-//   owner: "Leonella T Rocamora",
-//   tin: "123456567"
-// })
