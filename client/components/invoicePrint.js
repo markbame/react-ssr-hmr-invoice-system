@@ -7,17 +7,18 @@ const columns = [
   title: 'QTY',
   dataIndex: 'qty',
   key: 'qty',
-}, {
-  title: 'Specification',
-  dataIndex: 'specification',
-  key: 'specification',
 },
 {
  title: 'Unit',
  dataIndex: 'unit',
  key: 'unit',
 }, {
-  title: 'Price',
+  title: 'Specification',
+  dataIndex: 'specification',
+  key: 'specification',
+},
+ {
+  title: 'Unit Price',
   dataIndex: 'price',
   key: 'price',
   render: text => {
@@ -27,7 +28,7 @@ const columns = [
     return text
   },
 },{
-  title: 'Total',
+  title: 'Amount',
   dataIndex: 'total',
   key: 'total',
 }]

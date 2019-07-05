@@ -24,7 +24,7 @@ class DownloadPDF extends Component {
 
  render() {
    return (
-      <Card bordered={false}  style={{width:"800px"}}>
+      <Card bordered={false}  style={{width:"700px"}}>
         <Navigation name={`DownloadPDF: ${this.props.match.params.id}`} />
         {
           this.state && this.state.invoice

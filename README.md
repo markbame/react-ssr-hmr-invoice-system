@@ -5,8 +5,8 @@ you can also pre transpile before running in production
 
 * clone the project
 * npm install
-* run `npm yarn dev` - starts ssr, webpack watch and hot reload
-* run `npm yarn prod` - for production
+* run `yarn dev` - starts ssr, webpack watch and hot reload
+* run `yarn prod` - for production
 
 ### formatting, es2017+, etc.
 
