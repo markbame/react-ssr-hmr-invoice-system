@@ -52,11 +52,11 @@ const columns = [
         data.push(items[key])
       }
     }
-    data.push({qty:'',specification:'',price:'Total Sales (VAT inclusive)',total:totalTaxable})
-    data.push({qty:'',specification:'',price:'Less VAT',total:(totalTaxable*tax/100)})
-    data.push({qty:'',specification:'',price:'Amount Net of VAT',total:(Math.round(totalTaxable/(1+(tax/100))))})
-    data.push({qty:'',specification:'',price:'VAT Exempt Sales',total:total-totalTaxable})
-    data.push({qty:'',specification:'',price:'Grand Total', total})
+    data.push({qty:'',specification:'',price:'Total Sales (VAT inclusive)',total:totalTaxable.toFixed(2)})
+    data.push({qty:'',specification:'',price:'Less VAT',total:(totalTaxable*12/112).toFixed(2)})
+    data.push({qty:'',specification:'',price:'Amount Net of VAT',total:  (totalTaxable - (totalTaxable*12/112)).toFixed(2) })
+    data.push({qty:'',specification:'',price:'VAT Exempt Sales',total:(total-totalTaxable).toFixed(2)})
+    data.push({qty:'',specification:'',price:'Grand Total', total:total.toFixed(2)})
     return (
       <div>
         <h2 key={compant} style={{margin:"1px",marginTop:"60px", "textAlign":"center"}}>{compant}</h2>
@@ -70,7 +70,7 @@ const columns = [
           dataSource={data}
           pagination={false}
           columns={columns} />
-        <h4 key={12} style={{marginLeft:"30px", "textAlign":"left", fontWeight:"bold"}}>Authorized Signature:</h4>
+        <h4 key={12} style={{ marginLeft:"30px", "textAlign":"left", fontWeight:"bold"}}>Authorized Signature:</h4>
       </div>
     )
   }
