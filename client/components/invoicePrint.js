@@ -70,7 +70,7 @@ const columns = [
           dataSource={data}
           pagination={false}
           columns={columns} />
-        <h4 key={12} style={{marginLeft:"30px", "textAlign":"left", fontWeight:"bold"}}>Signature:</h4>
+        <h4 key={12} style={{marginLeft:"30px", "textAlign":"left", fontWeight:"bold"}}>Authorized Signature:</h4>
       </div>
     )
   }
