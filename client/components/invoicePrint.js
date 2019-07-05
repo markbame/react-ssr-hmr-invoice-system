@@ -66,7 +66,7 @@ const columns = [
         <h4 style={{marginLeft:"30px",marginTop:"30px", "textAlign":"left"}}><span style={{ fontWeight:'bold' }}>SOLD TO:</span> {soldTo}</h4>
         <h4 style={{marginLeft:"30px",marginTop:"5px", "textAlign":"left"}}><span style={{ fontWeight:'bold' }}>ADDRESS:</span> {address}</h4>
         <h4 style={{marginLeft:"30px",marginTop:"5px", "textAlign":"left"}}><span style={{ fontWeight:'bold' }}>DATE:</span> {moment(date,"YYYY-MM-DD").format("DD-MM-YYYY")}</h4>
-        <Table style={{margin:"30px"}}
+        <Table style={{margin:"30px", fontWeight:'bold'}}
           dataSource={data}
           pagination={false}
           columns={columns} />
