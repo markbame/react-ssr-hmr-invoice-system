@@ -53,7 +53,10 @@ class itemForm extends Component {
         >
           {getFieldDecorator('specification', {
           })(
-            <Select style={{ width: 120 }} onChange={this.handleChange.bind(this)}>
+            <Select
+            showSearch
+            style={{ width: 300 }}
+             onChange={this.handleChange.bind(this)}>
               { this.state &&  this.state.products.map(function(product){
                  return <Option value={product.title} key={JSON.stringify({
                    key: product.key,
