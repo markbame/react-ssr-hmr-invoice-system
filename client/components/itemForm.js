@@ -64,7 +64,7 @@ class itemForm extends Component {
                    unit:product.unit,
                    taxable:product.taxable})}
                    >
-                   {product.title}
+                   {product.title + " (" + product.unit + ")  ₱" + product.price}
                 </Option>
               }) }
             </Select>
